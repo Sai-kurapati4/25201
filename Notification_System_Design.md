@@ -72,11 +72,11 @@ Authorization: Bearer Token
 Content-Type: application/json
 ## Stage 2
 
-To store notification data, I would prefer PostgreSQL because notifications have a structured format and need reliable storage. Each notification belongs to a student, so a relational database is suitable for maintaining these relationships.
+To store notification data, I would use PostgreSQL since notifications have a structured format and need reliable storage. Each notification belongs to a student, so a relational database is suitable for maintaining those relationships.
 
-I would create two tables: one for students and another for notifications. The notifications table would store fields such as notification ID, student ID, notification type, message, read status, and timestamp.
+I like to  create two tables: one for students and another for notifications. The notifications table would store fields such as notification ID, student ID, notification type, message, read status, and timestamp.
 
-As the number of notifications increases, performance can become a concern. To handle this, I would add indexes on frequently searched fields like studentId and createdAt. Pagination can also be used so that only a limited number of notifications are loaded at a time instead of fetching everything together. Older notifications can be archived to reduce the size of the active table.
+As the number of notifications increases, performance may become a concern. To handle this, I prfer adding indexes on frequently searched fields like studentId and createdAt. Pagination can also be used so that only a limited number of notifications are loaded at a time instead of fetching everything together. Old notifications can archived to reduce the size of the active table.
 
 Example query:
 
@@ -86,11 +86,11 @@ ORDER BY createdAt DESC;
 
 ## Stage 3
 
-The given query may become slow because the notifications table contains millions of records. Without proper indexing, the database has to scan a large portion of the table before finding the required unread notifications.
+The given query can become slow because the notifications table contains millions of records. Without proper or good  indexing, the database has to scan a large portion of the table before finding the required unread notifications.
 
 To improve performance, I would create a composite index on studentId, isRead, and createdAt. This allows the database to quickly locate unread notifications for a specific student and return the results in the required order.
 
-I would not recommend creating indexes on every column. Although indexes improve read performance, they increase storage usage and slow down insert and update operations.
+I would not like to  recommend creating indexes on every column. Although indexes improve read performance, they increase storage usage and slow down insert and update operations.
 
 To find students who received placement notifications in the last seven days, I would use a query that filters based on notification type and timestamp. With proper indexing, the execution cost will be much lower.
 
