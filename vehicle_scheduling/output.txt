@@ -1,0 +1,5 @@
+Best Depot: 3
+Available Hours: 188
+Total Vehicle Hours: 141
+Total Impact: 178
+Vehicles Selected: 31g
