@@ -1,14 +1,9 @@
-const log = require("./middleware/logger");
+const getToken = require("./utils/auth");
 
 async function test() {
-  await log(
-    "backend",
-    "info",
-    "service",
-    "application started"
-  );
+  const token = await getToken();
 
-  console.log("log sent");
+  console.log(token);
 }
 
 test();
